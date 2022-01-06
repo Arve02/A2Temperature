@@ -1,0 +1,86 @@
+package activity5;
+import java.util.Scanner;
+
+public class Activity5 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        double[][] temp = new double[12][2];
+        
+        String[] months = {"January"," February"," March"," April"," May",
+            " June"," July"," August"," September"," October"," November",
+            " December"};
+        //loop to read highest temp
+        
+        double max = temp[0][0];
+        int max1 = 0;
+        for(int i = 0;i < 12;i++){
+            System.out.println("Enter  " +months[i]+" highest temperature: ");
+            
+            for(int j = 0; j < 1;j++){
+                temp[i][j] = input.nextDouble();
+                if (temp[i][j] > max){
+                    max = temp[i][j];
+                //if the element is higher than max then the value stored in 
+                //max
+                    max1 = i;
+                    //declare max1 to keep the value of i of the highest 
+                    //temp element
+                }
+            }
+            
+        }
+        //loop to read lowest temp
+        double low = 99999;
+        int low1 = 0;
+         for(int i = 0;i < 12;i++){
+            System.out.println("Enter  " +months[i]+" lowest temperature: ");
+           
+            for(int j = 1; j < 2;j++){
+                temp[i][j] = input.nextDouble();
+                if(temp[i][j] < low){
+                    //if statement to find the lowest temp
+                    //the lower value of temp will be stored in low1 while 
+                    //non lower value will not be stored 
+                    low = temp[i][j];
+                    //low1 is set to store the index of the lowest temp(element)
+                    low1 = i;
+                }    
+                    
+                
+            } 
+            
+        }
+         //loop to find sum of highest temp
+         //only involves first element(j) of each month (i)
+         double sum = 0;
+         for(int i = 0;i < 12;i++){
+             for(int j = 0;j < 1;j++){
+                //System.out.println(temp[i][j]);
+                 sum = sum + temp[i][j];
+             }
+         }
+         //loop to find sum and average of lowest temp
+         //involves 2nd element(j) of every month(i)
+         double avg = sum / 12;
+         sum = 0;
+         for(int i = 0;i < 12;i++){
+             
+             for(int j = 1;j < 2;j++){
+                 //System.out.println(temp[i][j]);
+                 sum = sum + temp[i][j];
+             }
+         }
+         double avg2 = sum /12;
+         //display output
+         System.out.println("The average lowest temperature is: "+avg2+ "°C");
+         System.out.println("The average highest temperature is: "+avg + "°C");
+         System.out.println("The hottest month is "+ months[max1] +" with "+ max+ "°C" );
+         System.out.println("The coldest month is "+ months[low1] +" with "+ low+ "°C" );
+    }
+    
+}
